@@ -18,7 +18,7 @@ function Header() {
 			<CssBaseline />
 			<AppBar
 				position="static"
-				color="white"
+				color="transparent"
 				elevation={0}
 				className={classes.appBar}
 			>

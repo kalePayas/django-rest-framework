@@ -36,10 +36,18 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
+const isBigName = (mainString, lengthToCut) => {
+	if (mainString.length > lengthToCut) {
+		return mainString.substr(0, lengthToCut) + "...";
+	}
+	return mainString;
+};
+
 const Posts = (props) => {
-    const { posts } = props;
+	const { posts } = props;
 	const classes = useStyles();
-	if (!posts || posts.length === 0) return <p>Can not find any posts, Sorry</p>;
+	if (!posts || posts.length === 0)
+		return <p>Can not find any posts, Sorry</p>;
 	return (
 		<Fragment>
 			<Container maxWidth="md" component="main">
@@ -63,7 +71,7 @@ const Posts = (props) => {
 											component="h2"
 											className={classes.postTitle}
 										>
-											{post.title.substr(0, 50)}...
+											{isBigName(post.title, 40)}
 										</Typography>
 										<div className={classes.postText}>
 											<Typography
@@ -71,11 +79,13 @@ const Posts = (props) => {
 												color="textPrimary"
 											></Typography>
 											<Typography
-												variant="p"
+												variant="subtitle2"
 												color="textSecondary"
 											>
-												{post.excerpt.substr(0, 60)}...
+												{isBigName(post.excerpt, 60)}
 											</Typography>
+											<br />
+											{post.excerpt.length > 24}
 										</div>
 									</CardContent>
 								</Card>
