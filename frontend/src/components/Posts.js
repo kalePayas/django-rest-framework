@@ -37,11 +37,16 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const isBigName = (mainString, lengthToCut) => {
-	if (mainString.length > lengthToCut) {
-		return mainString.substr(0, lengthToCut) + "...";
-	}
-	return mainString;
+	return mainString.length > lengthToCut
+		? mainString.substr(0, lengthToCut) + "..."
+		: mainString;
+		// if (mainString.length > lengthToCut){
+		// 	return mainString.substr(0, lengthToCut) + "..."
+		// } else {
+		// 	return mainString
+		// }
 };
+
 
 const Posts = (props) => {
 	const { posts } = props;
